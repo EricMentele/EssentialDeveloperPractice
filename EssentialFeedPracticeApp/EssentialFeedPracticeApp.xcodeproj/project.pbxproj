@@ -10,6 +10,8 @@
 		8C5650382B30DB0500760951 /* EssentialFeedPracticeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C56502F2B30DB0500760951 /* EssentialFeedPracticeApp.framework */; };
 		8C56503D2B30DB0500760951 /* EssentialFeedPracticeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C56503C2B30DB0500760951 /* EssentialFeedPracticeAppTests.swift */; };
 		8C56503E2B30DB0500760951 /* EssentialFeedPracticeApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C5650322B30DB0500760951 /* EssentialFeedPracticeApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C5650482B30E68800760951 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5650472B30E68800760951 /* FeedItem.swift */; };
+		8C56504A2B30E77C00760951 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5650492B30E77C00760951 /* FeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,8 @@
 		8C5650322B30DB0500760951 /* EssentialFeedPracticeApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeedPracticeApp.h; sourceTree = "<group>"; };
 		8C5650372B30DB0500760951 /* EssentialFeedPracticeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedPracticeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C56503C2B30DB0500760951 /* EssentialFeedPracticeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedPracticeAppTests.swift; sourceTree = "<group>"; };
+		8C5650472B30E68800760951 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		8C5650492B30E77C00760951 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				8C5650322B30DB0500760951 /* EssentialFeedPracticeApp.h */,
+				8C5650472B30E68800760951 /* FeedItem.swift */,
+				8C5650492B30E77C00760951 /* FeedLoader.swift */,
 			);
 			path = EssentialFeedPracticeApp;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 				TargetAttributes = {
 					8C56502E2B30DB0500760951 = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
 					};
 					8C5650362B30DB0500760951 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -191,6 +198,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C56504A2B30E77C00760951 /* FeedLoader.swift in Sources */,
+				8C5650482B30E68800760951 /* FeedItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +349,7 @@
 		8C5650422B30DB0500760951 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -364,6 +374,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -371,6 +382,7 @@
 		8C5650432B30DB0500760951 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -402,6 +414,7 @@
 		8C5650452B30DB0500760951 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8F48NKUJX6;
@@ -417,6 +430,7 @@
 		8C5650462B30DB0500760951 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8F48NKUJX6;
