@@ -12,7 +12,7 @@ final class EssentialFeedPracticeAppTests: XCTestCase {
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
         
-        XCTAssertNil(client.requestedURL)
+        XCTAssertEqual(client.requestedURLs, [])
     }
     
     func test_load_requestDataFromURL() {
@@ -21,7 +21,7 @@ final class EssentialFeedPracticeAppTests: XCTestCase {
         
         sut.load()
         
-        XCTAssertEqual(client.requestedURL, url)
+        XCTAssertEqual(client.requestedURLs, [url])
     }
     
     func test_loadTwice_requestDataFromURLTwice() {
@@ -42,11 +42,9 @@ private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut
 }
 
 private class HTTPClientSpy: HTTPClient {
-    var requestedURL: URL?
     var requestedURLs = [URL]()
     
     func get(from url: URL) {
-        self.requestedURL = url
         self.requestedURLs.append(url)
     }
 }
