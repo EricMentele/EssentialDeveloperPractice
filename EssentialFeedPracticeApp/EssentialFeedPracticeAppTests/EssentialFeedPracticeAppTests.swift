@@ -39,10 +39,10 @@ final class EssentialFeedPracticeAppTests: XCTestCase {
         
         client.error = NSError(domain: "TEST", code: 0)
         
-        var capturedError: RemoteFeedLoader.Error?
-        sut.load { error in capturedError = error }
+        var capturedErrors = [RemoteFeedLoader.Error]()
+        sut.load { error in capturedErrors.append(error) }
         
-        XCTAssertNotNil(capturedError)
+        XCTAssertEqual(capturedErrors, [.connectivity])
     }
 }
 
