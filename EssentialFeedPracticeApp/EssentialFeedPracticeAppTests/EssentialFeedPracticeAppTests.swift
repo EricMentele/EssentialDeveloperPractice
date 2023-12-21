@@ -9,6 +9,7 @@ import XCTest
 import EssentialFeedPracticeApp
 
 final class EssentialFeedPracticeAppTests: XCTestCase {
+    // MARK: Happy Path
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
         
@@ -33,6 +34,14 @@ final class EssentialFeedPracticeAppTests: XCTestCase {
         
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
+    
+//    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
+//        let (sut, client) = makeSUT()
+//        
+//        var capture
+//    }
+    
+    // MARK: Not Happy Path
     
     func test_load_deliversErrorOnClientError() {
         // Arrange
@@ -73,10 +82,10 @@ private func expect(
     file: StaticString = #filePath,
     line: UInt = #line
 ) {
-    var capturedErrors = [RemoteFeedLoader.Error]()
-    sut.load { capturedErrors.append($0) }
+    var capturedResults = [RemoteFeedLoader.Result]()
+    sut.load { capturedResults.append(.failure($0)) }
     action()
-    XCTAssertEqual(capturedErrors, [error], file: file, line: line)
+    XCTAssertEqual(capturedResults, [.failure(error)], file: file, line: line)
 }
 
 private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
