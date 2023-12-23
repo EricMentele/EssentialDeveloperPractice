@@ -35,11 +35,17 @@ final class EssentialFeedPracticeAppTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
-//    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
-//        let (sut, client) = makeSUT()
-//        
-//        var capture
-//    }
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
+        let (sut, client) = makeSUT()
+        
+        var capturedResults = [RemoteFeedLoader.Result]()
+        sut.load { capturedResults.append($0) }
+        
+        let emptyListJSON = Data("{\"items\": []}".utf8)
+        client.complete(withStatusCode: 200, data: emptyListJSON)
+        
+        XCTAssertEqual(capturedResults, [.success([])])
+    }
     
     // MARK: Not Happy Path
     
@@ -83,7 +89,7 @@ private func expect(
     line: UInt = #line
 ) {
     var capturedResults = [RemoteFeedLoader.Result]()
-    sut.load { capturedResults.append(.failure($0)) }
+    sut.load { capturedResults.append($0) }
     action()
     XCTAssertEqual(capturedResults, [.failure(error)], file: file, line: line)
 }
