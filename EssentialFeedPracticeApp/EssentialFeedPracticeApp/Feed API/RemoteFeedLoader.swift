@@ -35,7 +35,7 @@ public final class RemoteFeedLoader {
                 }
                 switch response.statusCode {
                 case 200:
-                    completion(.success(root.items))
+                    completion(.success(root.items.map { $0.item }))
                 default:
                     completion(.failure(.invalidData))
                 }
@@ -61,6 +61,22 @@ extension RemoteFeedLoader {
     }
     
     private struct Root: Decodable {
-        let items: [FeedItem]
+        let items: [Item]
+    }
+    
+    private struct Item: Decodable {
+        let id: UUID
+        let description: String?
+        let location: String?
+        let image: String
+        
+        var item: FeedItem {
+            return FeedItem(
+                id: id,
+                description: description,
+                location: location,
+                imageURL: URL(string: image)!
+            )
+        }
     }
 }
