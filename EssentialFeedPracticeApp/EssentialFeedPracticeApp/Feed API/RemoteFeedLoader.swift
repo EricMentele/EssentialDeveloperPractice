@@ -29,13 +29,18 @@ public final class RemoteFeedLoader {
         client.get(from: url) { result in
             switch result {
             case let .success(data, response):
-                guard let root = try? JSONDecoder().decode(Root.self, from: data) else {
-                    completion(.failure(.invalidData))
-                    return
-                }
                 switch response.statusCode {
                 case 200:
-                    completion(.success(root.items.map { $0.item }))
+                    do {
+                        let items = try FeedItemsMapper.map(data, response)
+                        completion(.success(items))
+                    } catch let error {
+                        guard let error = error as? RemoteFeedLoader.Error else {
+                            return completion(.failure(.invalidData))
+                        }
+                        
+                        completion(.failure(error))
+                    }
                 default:
                     completion(.failure(.invalidData))
                 }
@@ -47,19 +52,7 @@ public final class RemoteFeedLoader {
     }
 }
 
-// MARK: - Associated Types
-
-extension RemoteFeedLoader {
-    public enum Result: Equatable {
-        case success([FeedItem])
-        case failure(Error)
-    }
-    
-    public enum Error: Swift.Error {
-        case connectivity
-        case invalidData
-    }
-    
+private class FeedItemsMapper {
     private struct Root: Decodable {
         let items: [Item]
     }
@@ -78,5 +71,27 @@ extension RemoteFeedLoader {
                 imageURL: URL(string: image)!
             )
         }
+    }
+    
+    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedItem] {
+        guard let root = try? JSONDecoder().decode(Root.self, from: data) else {
+            throw RemoteFeedLoader.Error.invalidData
+        }
+        
+        return root.items.map { $0.item }
+    }
+}
+
+// MARK: - Associated Types
+
+extension RemoteFeedLoader {
+    public enum Result: Equatable {
+        case success([FeedItem])
+        case failure(Error)
+    }
+    
+    public enum Error: Swift.Error {
+        case connectivity
+        case invalidData
     }
 }
