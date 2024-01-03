@@ -96,56 +96,64 @@ final class EssentialFeedPracticeAppTests: XCTestCase {
             client.complete(withStatusCode: 200, data: invalidJSON)
         })
     }
-}
-
-private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-    let json = ["items": items]
-    return try! JSONSerialization.data(withJSONObject: json)
-}
-
-private func expect(
-    sut: RemoteFeedLoader,
-    toCompleteWith result: RemoteFeedLoader.Result,
-    when action: () -> Void,
-    file: StaticString = #filePath,
-    line: UInt = #line
-) {
-    var capturedResults = [RemoteFeedLoader.Result]()
-    sut.load { capturedResults.append($0) }
     
-    action()
-    
-    XCTAssertEqual(capturedResults, [result], file: file, line: line)
-}
-
-private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
-    let client = HTTPClientSpy()
-    let sut = RemoteFeedLoader(client: client, url: url)
-    return (sut, client)
-}
-
-private class HTTPClientSpy: HTTPClient {
-    var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
-    var requestedURLs: [URL] {
-        return messages.map { $0.url }
+    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+        let json = ["items": items]
+        return try! JSONSerialization.data(withJSONObject: json)
     }
-    
-    func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
-        messages.append((url, completion))
+
+    private func expect(
+        sut: RemoteFeedLoader,
+        toCompleteWith result: RemoteFeedLoader.Result,
+        when action: () -> Void,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        var capturedResults = [RemoteFeedLoader.Result]()
+        sut.load { capturedResults.append($0) }
+        
+        action()
+        
+        XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
-    
-    func complete(with error: Error, at index: Int = 0) {
-        messages[index].completion(.failure(error))
+
+    private func makeSUT(url: URL = URL(string: "https://a-given-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = RemoteFeedLoader(client: client, url: url)
+        trackForMemoryLeaks(client)
+        trackForMemoryLeaks(sut)
+        return (sut, client)
     }
-    
-    func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
-        let response = HTTPURLResponse(
-            url: requestedURLs[index],
-            statusCode: code,
-            httpVersion: nil,
-            headerFields: nil
-        )
-        messages[index].completion(.success(data, response!))
+
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
+        }
+    }
+
+    private class HTTPClientSpy: HTTPClient {
+        var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
+        var requestedURLs: [URL] {
+            return messages.map { $0.url }
+        }
+        
+        func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
+            messages.append((url, completion))
+        }
+        
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completion(.failure(error))
+        }
+        
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
+            let response = HTTPURLResponse(
+                url: requestedURLs[index],
+                statusCode: code,
+                httpVersion: nil,
+                headerFields: nil
+            )
+            messages[index].completion(.success(data, response!))
+        }
     }
 }
 
