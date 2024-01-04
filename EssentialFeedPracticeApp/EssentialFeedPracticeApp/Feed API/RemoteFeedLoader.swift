@@ -23,14 +23,10 @@ public final class RemoteFeedLoader {
                 switch response.statusCode {
                 case 200:
                     do {
-                        let items = try FeedItemsMapper.map(data, response)
+                        let items = try FeedItemsMapper.map(data)
                         completion(.success(items))
-                    } catch let error {
-                        guard let error = error as? RemoteFeedLoader.Error else {
-                            return completion(.failure(.invalidData))
-                        }
-                        
-                        completion(.failure(error))
+                    } catch {
+                        completion(.failure(.invalidData))
                     }
                 default:
                     completion(.failure(.invalidData))
