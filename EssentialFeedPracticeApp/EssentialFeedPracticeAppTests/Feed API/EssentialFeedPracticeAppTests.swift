@@ -138,6 +138,8 @@ private extension EssentialFeedPracticeAppTests {
             default:
                 XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
             }
+            
+            expectation.fulfill()
         }
         
         action()
