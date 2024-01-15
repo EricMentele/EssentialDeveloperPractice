@@ -28,6 +28,23 @@ class URLSessionHTTPClient {
 }
 
 final class URLSessionHTTPClientTests: XCTestCase {
+    func test_getFromURL_performsGETRequestWithURL() {
+        URLProtocolStub.startInterceptingRequests()
+        let url = URL(string: "http://any-url.com")!
+        let exp = expectation(description: "Wait for request")
+        
+        URLProtocolStub.observeRequests { request in
+            XCTAssertEqual(request.url, url)
+            XCTAssertEqual(request.httpMethod, "GET")
+            exp.fulfill()
+        }
+        
+        URLSessionHTTPClient().get(from: url) { _ in }
+        
+        wait(for: [exp], timeout: 1.0)
+        URLProtocolStub.stopInterceptingRequests()
+    }
+    
     func test_getFromURL_failsOnRequestError() {
         URLProtocolStub.startInterceptingRequests()
         let url = URL(string: "http://any-url.com")!
@@ -60,11 +77,16 @@ final class URLSessionHTTPClientTests: XCTestCase {
 extension URLSessionHTTPClientTests {
     class URLProtocolStub: URLProtocol {
         private static var stub: Stub?
+        private static var requestObserver: ((URLRequest) -> Void)?
         
         private struct Stub {
             let error: Error?
             let data: Data?
             let response: URLResponse?
+        }
+        
+        static func observeRequests(_ observer: @escaping (URLRequest) -> Void) {
+            requestObserver = observer
         }
         
         static func stub(data: Data?, response: URLResponse?, error: Error? = nil) {
@@ -78,9 +100,12 @@ extension URLSessionHTTPClientTests {
         static func stopInterceptingRequests() {
             URLProtocol.unregisterClass(URLProtocolStub.self)
             stub = nil
+            requestObserver = nil
         }
         
         override class func canInit(with request: URLRequest) -> Bool {
+            requestObserver?(request)
+            // Intercept all url requests!
             return true
         }
         
@@ -94,8 +119,6 @@ extension URLSessionHTTPClientTests {
                 client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
             } else if let error = URLProtocolStub.stub?.error {
                 client?.urlProtocol(self, didFailWithError: error)
-            } else {
-                assertionFailure("Impossible state in start loading URLProtocolStub")
             }
             
             client?.urlProtocolDidFinishLoading(self)
