@@ -21,6 +21,8 @@ class URLSessionHTTPClient {
         session.dataTask(with: url) { data, response, error in
             if let error {
                 completion(.failure(error))
+            } else if let data, data.count > 0, let response = response as? HTTPURLResponse {
+                completion(.success(data, response))
             } else {
                 completion(.failure(UnexpectedValuesRepresentation()))
             }
@@ -41,6 +43,8 @@ final class URLSessionHTTPClientTests: XCTestCase {
         URLProtocolStub.stopInterceptingRequests()
     }
     
+    // MARK: - Success
+    
     func test_getFromURL_performsGETRequestWithURL() {
         let url = anyURL()
         let exp = expectation(description: "Wait for request")
@@ -56,12 +60,36 @@ final class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_getFromURL_succeedsOnHTTPURLResponseWithData() {
+        let expectedData = anyData()
+        let expectedResponse = anyHTTPURLResponse()
+        URLProtocolStub.stub(data: expectedData, response: expectedResponse)
+        let exp = expectation(description: "Wait for request")
+        
+        makeSUT().get(from: anyURL()) { result in
+            switch result {
+            case let .success(receivedData, receivedResponse):
+                XCTAssertEqual(receivedData, expectedData)
+                XCTAssertEqual(receivedResponse.url, expectedResponse.url)
+                
+            case let .failure(error):
+                XCTFail("Expected success, got \(error) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    // MARK: - Failure
+    
     func test_getFromURL_failsOnRequestError() {
         let requestError = anyNSError()
         
         let recievedError = resultErrorFor(data: nil, response: nil, error: requestError)
         
-        XCTAssertEqual((recievedError as NSError?)?.domain, requestError.domain)
+        XCTAssertEqual((recievedError as NSError?)?.domain, (requestError as NSError?)?.domain)
     }
     
     func test_getFromURL_failsOnAllInvalidCases() {
@@ -167,10 +195,15 @@ extension URLSessionHTTPClientTests {
         }
         
         override func startLoading() {
-            if let data = URLProtocolStub.stub?.data, let response = URLProtocolStub.stub?.response {
+            if let data = URLProtocolStub.stub?.data {
                 client?.urlProtocol(self, didLoad: data)
+            }
+            
+            if let response = URLProtocolStub.stub?.response {
                 client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-            } else if let error = URLProtocolStub.stub?.error {
+            }
+            
+            if let error = URLProtocolStub.stub?.error {
                 client?.urlProtocol(self, didFailWithError: error)
             }
             
