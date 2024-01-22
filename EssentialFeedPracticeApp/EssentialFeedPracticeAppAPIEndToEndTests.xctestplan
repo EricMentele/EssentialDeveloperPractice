@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "D3B4C135-3B32-44B6-A4C1-9E810E310F06",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
+        "identifier" : "8C2783372B5B10DB00A8E585",
+        "name" : "EssentialFeedPracticeAppAPIEndToEndTests"
+      }
+    }
+  ],
+  "version" : 1
+}

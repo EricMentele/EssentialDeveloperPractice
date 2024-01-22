@@ -5,22 +5,6 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <BuildActionEntries>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8C56502E2B30DB0500760951"
-               BuildableName = "EssentialFeedPracticeApp.framework"
-               BlueprintName = "EssentialFeedPracticeApp"
-               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -29,7 +13,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialFeedPracticeAppTests/Feed API/EssentialFeedPracticeApp.xctestplan"
+            reference = "container:EssentialFeedPracticeAppAPIEndToEndTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -39,9 +23,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8C5650362B30DB0500760951"
-               BuildableName = "EssentialFeedPracticeAppTests.xctest"
-               BlueprintName = "EssentialFeedPracticeAppTests"
+               BlueprintIdentifier = "8C2783372B5B10DB00A8E585"
+               BuildableName = "EssentialFeedPracticeAppAPIEndToEndTests.xctest"
+               BlueprintName = "EssentialFeedPracticeAppAPIEndToEndTests"
                ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -64,15 +48,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8C56502E2B30DB0500760951"
-            BuildableName = "EssentialFeedPracticeApp.framework"
-            BlueprintName = "EssentialFeedPracticeApp"
-            ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
