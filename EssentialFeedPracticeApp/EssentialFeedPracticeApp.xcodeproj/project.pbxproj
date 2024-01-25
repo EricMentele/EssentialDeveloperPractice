@@ -41,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C1824122B5EE35F0085B1E9 /* EssentialFeedPracticeAppAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = EssentialFeedPracticeAppAPIEndToEndTests.xctestplan; sourceTree = SOURCE_ROOT; };
+		8C1824122B5EE35F0085B1E9 /* EssentialFeedPracticeAppAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedPracticeAppAPIEndToEndTests.xctestplan; sourceTree = SOURCE_ROOT; };
 		8C2783252B59E2D900A8E585 /* EssentialFeedPracticeApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = EssentialFeedPracticeApp.xctestplan; path = "EssentialFeedPracticeAppTests/Feed API/EssentialFeedPracticeApp.xctestplan"; sourceTree = SOURCE_ROOT; };
 		8C2783382B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedPracticeAppAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C27833A2B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedPracticeAppAPIEndToEndTests.swift; sourceTree = "<group>"; };
@@ -513,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -546,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
