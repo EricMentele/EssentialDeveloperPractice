@@ -1,23 +1,29 @@
 {
   "configurations" : [
     {
-      "id" : "70FFB603-EF52-49FA-A602-ADBCEC05E60F",
-      "name" : "Test Scheme Action",
+      "id" : "0D46B964-9AC9-4759-8F2F-8CBA7678D60D",
+      "name" : "Configuration 1",
       "options" : {
 
       }
     }
   ],
   "defaultOptions" : {
-    "testExecutionOrdering" : "random"
+
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
         "identifier" : "8C2783372B5B10DB00A8E585",
         "name" : "EssentialFeedPracticeAppAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
+        "identifier" : "8C5650362B30DB0500760951",
+        "name" : "EssentialFeedPracticeAppTests"
       }
     }
   ],

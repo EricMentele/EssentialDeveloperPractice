@@ -41,8 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C1824122B5EE35F0085B1E9 /* EssentialFeedPracticeAppAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedPracticeAppAPIEndToEndTests.xctestplan; sourceTree = SOURCE_ROOT; };
-		8C2783252B59E2D900A8E585 /* EssentialFeedPracticeApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = EssentialFeedPracticeApp.xctestplan; path = "EssentialFeedPracticeAppTests/Feed API/EssentialFeedPracticeApp.xctestplan"; sourceTree = SOURCE_ROOT; };
 		8C2783382B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedPracticeAppAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C27833A2B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedPracticeAppAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		8C56502F2B30DB0500760951 /* EssentialFeedPracticeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeedPracticeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +53,9 @@
 		8C56504F2B406EEB00760951 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		8C5650512B44D17A00760951 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		8C5650542B489D8100760951 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		8CAF3C762B646C0E00687CBC /* EssentialFeedPracticeAppAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = EssentialFeedPracticeAppAPIEndToEndTests.xctestplan; sourceTree = SOURCE_ROOT; };
+		8CAF3C772B646CC000687CBC /* EssentialFeedPracticeAppFeedAPITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = EssentialFeedPracticeAppFeedAPITests.xctestplan; sourceTree = SOURCE_ROOT; };
+		8CAF3C782B646D2800687CBC /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		8CC5F0DD2B56FA5D00276A0A /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		8CC5F0E12B59DA5500276A0A /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +90,7 @@
 		8C2783392B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C1824122B5EE35F0085B1E9 /* EssentialFeedPracticeAppAPIEndToEndTests.xctestplan */,
+				8CAF3C762B646C0E00687CBC /* EssentialFeedPracticeAppAPIEndToEndTests.xctestplan */,
 				8C27833A2B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests.swift */,
 			);
 			path = EssentialFeedPracticeAppAPIEndToEndTests;
@@ -127,6 +128,7 @@
 		8C56503B2B30DB0500760951 /* EssentialFeedPracticeAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				8CAF3C782B646D2800687CBC /* CI.xctestplan */,
 				8C5650532B47264800760951 /* Feed API */,
 				8C2783392B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests */,
 			);
@@ -156,7 +158,7 @@
 		8C5650532B47264800760951 /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
-				8C2783252B59E2D900A8E585 /* EssentialFeedPracticeApp.xctestplan */,
+				8CAF3C772B646CC000687CBC /* EssentialFeedPracticeAppFeedAPITests.xctestplan */,
 				8CC5F0E02B56FACF00276A0A /* Helpers */,
 				8C56503C2B30DB0500760951 /* RemoteFeedLoaderTests.swift */,
 				8C5650542B489D8100760951 /* URLSessionHTTPClientTests.swift */,
