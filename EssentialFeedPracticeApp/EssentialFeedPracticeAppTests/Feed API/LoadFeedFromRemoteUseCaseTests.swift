@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeedPracticeApp
 
-final class EssentialFeedPracticeAppTests: XCTestCase {
+final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     // MARK: Happy Path
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
@@ -114,7 +114,7 @@ final class EssentialFeedPracticeAppTests: XCTestCase {
 
 // MARK: Helpers
 
-private extension EssentialFeedPracticeAppTests {
+private extension LoadFeedFromRemoteUseCaseTests {
     private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
         let json = ["items": items]
         return try! JSONSerialization.data(withJSONObject: json)
