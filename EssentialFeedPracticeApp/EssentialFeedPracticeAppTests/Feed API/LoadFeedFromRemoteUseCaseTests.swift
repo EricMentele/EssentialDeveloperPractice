@@ -48,11 +48,11 @@ final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         let items = [
-            FeedItem.stub(imageURL: URL(string: "http://a-url.com")!),
-            FeedItem.stub(
+            FeedImage.stub(url: URL(string: "http://a-url.com")!),
+            FeedImage.stub(
                 description: "a description",
                 location: "a location",
-                imageURL: URL(string: "http://another-url.com")!
+                url: URL(string: "http://another-url.com")!
             )
         ]
         
@@ -187,21 +187,30 @@ private extension LoadFeedFromRemoteUseCaseTests {
     }
 }
 
-private extension FeedItem {
-    static func stub(id: UUID = UUID(), description: String? = nil, location: String? = nil, imageURL: URL) -> FeedItem {
-        FeedItem(id: id, description: description, location: location, imageURL: imageURL)
+private extension FeedImage {
+    static func stub(
+        id: UUID = UUID(),
+        description: String? = nil,
+        location: String? = nil,
+        url: URL
+    ) -> FeedImage {
+        FeedImage(
+            id: id, description: description,
+            location: location,
+            url: url
+        )
     }
     
     func itemJSON() -> [String: Any] {
         return itemDictionary(item: self)
     }
     
-    private func itemDictionary(item: FeedItem) -> [String: Any] {
+    private func itemDictionary(item: FeedImage) -> [String: Any] {
         [
             "id": item.id.uuidString,
             "description": item.description,
             "location": item.location,
-            "image": item.imageURL.absoluteString
+            "image": item.url.absoluteString
         ]
         .reduce(into: [String: Any]()) { (acc, e) in
             if let value = e.value { acc[e.key] = value }
