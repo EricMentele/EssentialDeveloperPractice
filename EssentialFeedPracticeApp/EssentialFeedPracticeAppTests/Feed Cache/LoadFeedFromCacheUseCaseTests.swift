@@ -140,6 +140,10 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         
         XCTAssertTrue(recievedResults.isEmpty)
     }
+    
+    func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
+        
+    }
 }
 
 // MARK: - Helpers
