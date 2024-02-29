@@ -28,6 +28,8 @@
 		8CF2911D2B8FA73000E5518F /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF2911C2B8FA73000E5518F /* LoadFeedFromCacheUseCaseTests.swift */; };
 		8CF2911F2B8FA9D800E5518F /* FeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF2911E2B8FA9D800E5518F /* FeedStoreSpy.swift */; };
 		8CF291212B91061900E5518F /* ValidateCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF291202B91061900E5518F /* ValidateCacheUseCaseTests.swift */; };
+		8CF291252B91284100E5518F /* FeedCacheHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF291222B91274500E5518F /* FeedCacheHelpers.swift */; };
+		8CF291282B91298100E5518F /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF291272B91298100E5518F /* SharedTestHelpers.swift */; };
 		8CFC25FD2B7D663A00C558BF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8CFC25FC2B7D663A00C558BF /* README.md */; };
 		8CFC25FF2B7D762600C558BF /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFC25FE2B7D762600C558BF /* CacheFeedUseCaseTests.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		8CF2911C2B8FA73000E5518F /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8CF2911E2B8FA9D800E5518F /* FeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpy.swift; sourceTree = "<group>"; };
 		8CF291202B91061900E5518F /* ValidateCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		8CF291222B91274500E5518F /* FeedCacheHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheHelpers.swift; sourceTree = "<group>"; };
+		8CF291272B91298100E5518F /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		8CFC25FC2B7D663A00C558BF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8CFC25FE2B7D762600C558BF /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				8CC5F0DD2B56FA5D00276A0A /* XCTestCase+MemoryLeakTracking.swift */,
+				8CF291272B91298100E5518F /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -206,12 +211,21 @@
 			path = FeedCache;
 			sourceTree = "<group>";
 		};
+		8CF291262B91284800E5518F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8CF2911E2B8FA9D800E5518F /* FeedStoreSpy.swift */,
+				8CF291222B91274500E5518F /* FeedCacheHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8CFC26002B7D762A00C558BF /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
 				8CF2911C2B8FA73000E5518F /* LoadFeedFromCacheUseCaseTests.swift */,
 				8CFC25FE2B7D762600C558BF /* CacheFeedUseCaseTests.swift */,
-				8CF2911E2B8FA9D800E5518F /* FeedStoreSpy.swift */,
+				8CF291262B91284800E5518F /* Helpers */,
 				8CF291202B91061900E5518F /* ValidateCacheUseCaseTests.swift */,
 			);
 			path = "Feed Cache";
@@ -387,6 +401,8 @@
 				8C56503D2B30DB0500760951 /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				8CF2911F2B8FA9D800E5518F /* FeedStoreSpy.swift in Sources */,
 				8CC5F0DF2B56FA9500276A0A /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				8CF291252B91284100E5518F /* FeedCacheHelpers.swift in Sources */,
+				8CF291282B91298100E5518F /* SharedTestHelpers.swift in Sources */,
 				8CFC25FF2B7D762600C558BF /* CacheFeedUseCaseTests.swift in Sources */,
 				8C5650552B489D8100760951 /* URLSessionHTTPClientTests.swift in Sources */,
 				8CF291212B91061900E5518F /* ValidateCacheUseCaseTests.swift in Sources */,

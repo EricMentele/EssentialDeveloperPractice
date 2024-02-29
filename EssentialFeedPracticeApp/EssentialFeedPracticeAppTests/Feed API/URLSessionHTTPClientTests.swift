@@ -92,16 +92,8 @@ extension URLSessionHTTPClientTests {
         return URLSessionHTTPClient()
     }
     
-    private func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
     private func anyData() -> Data {
         Data(bytes: "any data".utf8)
-    }
-    
-    private func anyNSError() -> Error {
-        NSError(domain: "any error", code: 0)
     }
     
     private func nonHTTPURLResponse() -> URLResponse {
