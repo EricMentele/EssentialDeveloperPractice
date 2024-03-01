@@ -28,13 +28,11 @@ func uniqueImage() -> FeedImage {
     )
 }
 
+// MARK: - Cache Policy Date Helper
+
 extension Date {
     func adding(days: Int) -> Date {
         return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
-    }
-    
-    func adding(seconds: TimeInterval) -> Date {
-        return self + seconds
     }
     
     func minusFeedCacheMaxAge() -> Date {
@@ -43,5 +41,13 @@ extension Date {
     
     private var feedCacheMaxAgeInDays: Int {
         return 7
+    }
+}
+
+// MARK: - Shared Date Helpers
+
+extension Date {
+    private func adding(seconds: TimeInterval) -> Date {
+        return self + seconds
     }
 }
