@@ -5,9 +5,12 @@ Insert
 
 - Retrieve
     - Empty cache works (before something is inserted)
+        - Empty cache returns empty
+        - Empty cache twice returns empty (no side-effects)
     - Non-empty cache returns data
     - Non-empty cache twice returns same data (retrieve should have no side-effects)
     - Error (if possible to simulate, e.g., invalid data)
+        - Error twice returns same error
 
 - Delete
     - Empty cache does nothing (cache stays empty and does not fail)
