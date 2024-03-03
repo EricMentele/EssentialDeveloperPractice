@@ -105,6 +105,16 @@ final class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieve: .found(feed: feed.local, timestamp: timestamp))
     }
     
+    func test_retrieve_hasNoSideEffectOnNonEmptyCache() {
+        let sut = makeSUT()
+        let feed = uniqueImageFeed().local
+        let timestamp = Date()
+        
+        insert((feed: feed, timestamp: timestamp), to: sut)
+        
+        expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
+    }
+    
     func test_retrieve_deliversFailureOnRetrievalError() {
         let storeURL = testSpecificStoreURL()
         let sut = makeSUT(storeURL: storeURL)
@@ -114,14 +124,13 @@ final class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieve: .failure(anyNSError()))
     }
     
-    func test_retrieve_hasNoSideEffectOnNonEmptyCache() {
-        let sut = makeSUT()
-        let feed = uniqueImageFeed().local
-        let timestamp = Date()
+    func test_retrieve_hasNoSideEffectsOnFailure() {
+        let storeURL = testSpecificStoreURL()
+        let sut = makeSUT(storeURL: storeURL)
         
-        insert((feed: feed, timestamp: timestamp), to: sut)
+        try! "invalid data".write(to: testSpecificStoreURL(), atomically: false, encoding: .utf8)
         
-        expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetrieveTwice: .failure(anyNSError()))
     }
 }
 
