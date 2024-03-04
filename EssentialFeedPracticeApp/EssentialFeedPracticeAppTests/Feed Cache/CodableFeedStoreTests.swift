@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeedPracticeApp
 
-final class CodableFeedStoreTests: XCTestCase {
+final class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
     override func setUp() {
         super.setUp()
         
@@ -45,7 +45,7 @@ final class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieve: .found(feed: feed.local, timestamp: timestamp))
     }
     
-    func test_retrieve_hasNoSideEffectOnNonEmptyCache() {
+    func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
         let sut = makeSUT()
         let feed = uniqueImageFeed().local
         let timestamp = Date()
@@ -75,7 +75,7 @@ final class CodableFeedStoreTests: XCTestCase {
     
     // MARK: Insert
     
-    func test_insert_overridesPreviouslInsertedCacheValues() {
+    func test_insert_overridesPreviouslyInsertedCacheValues() {
         let sut = makeSUT()
         
         insert((uniqueImageFeed().local, Date()), to: sut)
