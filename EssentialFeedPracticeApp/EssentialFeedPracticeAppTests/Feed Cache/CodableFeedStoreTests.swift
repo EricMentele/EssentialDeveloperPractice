@@ -209,14 +209,14 @@ final class CodableFeedStoreTests: XCTestCase {
 }
 
 private extension CodableFeedStoreTests {
-    func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> CodableFeedStore {
+    func makeSUT(storeURL: URL? = nil, file: StaticString = #file, line: UInt = #line) -> FeedStore {
         let sut = CodableFeedStore(storeURL: storeURL ?? testSpecificStoreURL())
         trackForMemoryLeaks(sut)
         return sut
     }
     
     @discardableResult
-    func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: CodableFeedStore) -> Error? {
+    func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: FeedStore) -> Error? {
         let exp = expectation(description: "Wait for cache insertion")
         var error: Error?
         
@@ -229,7 +229,7 @@ private extension CodableFeedStoreTests {
         return error
     }
     
-    func deleteCache(from sut: CodableFeedStore) -> Error? {
+    func deleteCache(from sut: FeedStore) -> Error? {
         let exp = expectation(description: "Wait for cache deletion.")
         var recievedDeletionError: Error?
         sut.deleteCachedFeed { deletionError in
@@ -241,12 +241,12 @@ private extension CodableFeedStoreTests {
         return recievedDeletionError
     }
     
-    func expect(_ sut: CodableFeedStore, toRetrieveTwice expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
     
-    func expect(_ sut: CodableFeedStore, toRetrieve expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: FeedStore, toRetrieve expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for cache retrieval")
         
         sut.retrieve { retrievalResult in
