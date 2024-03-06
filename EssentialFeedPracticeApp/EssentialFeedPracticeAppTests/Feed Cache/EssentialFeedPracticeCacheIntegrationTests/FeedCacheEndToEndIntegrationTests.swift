@@ -32,12 +32,7 @@ final class FeedCacheEndToEndIntegrationTests: XCTestCase {
         let sutToPerformLoad = makeSUT()
         let feed = uniqueImageFeed().models
         
-        let saveFinishExpectation = expectation(description: "Wait for save to finish")
-        sutToPerformSave.save(feed) { saveError in
-            XCTAssertNil(saveError)
-            saveFinishExpectation.fulfill()
-        }
-        wait(for: [saveFinishExpectation], timeout: 1.0)
+        expect(sutToPerformSave, toSave: feed)
         
         expect(sutToPerformLoad, toLoad: feed)
     }
@@ -49,19 +44,8 @@ final class FeedCacheEndToEndIntegrationTests: XCTestCase {
         let firstFeed = uniqueImageFeed().models
         let latestFeed = uniqueImageFeed().models
         
-        let saveExp1 = expectation(description: "Wait for save completion")
-        sutToPerformFirstSave.save(firstFeed) { saveError in
-            XCTAssertNil(saveError, "Expected to save feed successfully")
-            saveExp1.fulfill()
-        }
-        wait(for: [saveExp1], timeout: 1.0)
-        
-        let saveExp2 = expectation(description: "Wait for save completion")
-        sutToPerformLastSave.save(latestFeed) { saveError in
-            XCTAssertNil(saveError, "Expected to save feed successfully")
-            saveExp2.fulfill()
-        }
-        wait(for: [saveExp2], timeout: 1.0)
+        expect(sutToPerformFirstSave, toSave: firstFeed)
+        expect(sutToPerformLastSave, toSave: latestFeed)
         
         expect(sutToPerformLoad, toLoad: latestFeed)
     }
@@ -91,6 +75,15 @@ private extension FeedCacheEndToEndIntegrationTests {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    func expect(_ sut: LocalFeedLoader, toSave expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+        let saveFinishExpectation = expectation(description: "Wait for save to finish")
+        sut.save(expectedFeed) { saveError in
+            XCTAssertNil(saveError)
+            saveFinishExpectation.fulfill()
+        }
+        wait(for: [saveFinishExpectation], timeout: 1.0)
     }
     
     func setupEmptyStoreState() {
