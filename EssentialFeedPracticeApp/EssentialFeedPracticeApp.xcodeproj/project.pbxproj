@@ -217,6 +217,7 @@
 		8C700FDB2B97F3F200B8E120 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				8CF2912D2B9575DC00E5518F /* CodableFeedStore.swift */,
 				8C700FDC2B97F41000B8E120 /* Core Data */,
 			);
 			path = Infrastructure;
@@ -247,7 +248,6 @@
 				8CF291122B893F4200E5518F /* FeedStore.swift */,
 				8CF2911A2B8EF11300E5518F /* LocalFeedImage.swift */,
 				8CF291292B92411500E5518F /* FeedCachePolicy.swift */,
-				8CF2912D2B9575DC00E5518F /* CodableFeedStore.swift */,
 				8C700FDB2B97F3F200B8E120 /* Infrastructure */,
 			);
 			path = FeedCache;
