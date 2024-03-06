@@ -37,6 +37,31 @@ final class FeedCacheEndToEndIntegrationTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1.0)
     }
+    
+    func test_load_deliversItemsSavedOnASeperateInstance() {
+        let sutToPerformSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        let feed = uniqueImageFeed().models
+        
+        let saveFinishExpectation = expectation(description: "Wait for save to finish")
+        sutToPerformSave.save(feed) { saveError in
+            XCTAssertNil(saveError)
+            saveFinishExpectation.fulfill()
+        }
+        wait(for: [saveFinishExpectation], timeout: 1.0)
+        
+        let loadFinishExpectation = expectation(description: "Wait for load feed to finish")
+        sutToPerformLoad.load { loadFeedResult in
+            switch loadFeedResult {
+            case let .success(loadedFeed):
+                XCTAssertEqual(feed, loadedFeed, "Expected loaded feed to be the same as the saved: \(feed). Got \(loadedFeed)")
+            case let .failure(error):
+                XCTFail("Expected load, after save, to succeed Got \(error) instead.")
+            }
+            loadFinishExpectation.fulfill()
+        }
+        wait(for: [loadFinishExpectation], timeout: 1.0)
+    }
 }
 
 // MARK: Helpers
