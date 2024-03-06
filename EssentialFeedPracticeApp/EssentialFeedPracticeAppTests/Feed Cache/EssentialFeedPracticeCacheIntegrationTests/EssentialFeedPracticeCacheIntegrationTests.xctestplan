@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "A94C1EAB-2C0F-4B48-A101-913CD9643B34",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "EssentialFeedPracticeCacheIntegrationTests"
+      ],
+      "target" : {
+        "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
+        "identifier" : "8C700FE62B98DD3500B8E120",
+        "name" : "EssentialFeedPracticeCacheIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
