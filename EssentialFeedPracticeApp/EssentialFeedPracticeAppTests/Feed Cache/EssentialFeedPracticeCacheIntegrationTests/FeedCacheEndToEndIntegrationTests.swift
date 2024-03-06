@@ -24,7 +24,7 @@ final class FeedCacheEndToEndIntegrationTests: XCTestCase {
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
         
-        expect(sut: sut, toLoad: [])
+        expect(sut, toLoad: [])
     }
     
     func test_load_deliversItemsSavedOnASeperateInstance() {
@@ -39,7 +39,31 @@ final class FeedCacheEndToEndIntegrationTests: XCTestCase {
         }
         wait(for: [saveFinishExpectation], timeout: 1.0)
         
-        expect(sut: sutToPerformLoad, toLoad: feed)
+        expect(sutToPerformLoad, toLoad: feed)
+    }
+    
+    func test_save_overridesItemsSavedOnASeparateInstance() {
+        let sutToPerformFirstSave = makeSUT()
+        let sutToPerformLastSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        let firstFeed = uniqueImageFeed().models
+        let latestFeed = uniqueImageFeed().models
+        
+        let saveExp1 = expectation(description: "Wait for save completion")
+        sutToPerformFirstSave.save(firstFeed) { saveError in
+            XCTAssertNil(saveError, "Expected to save feed successfully")
+            saveExp1.fulfill()
+        }
+        wait(for: [saveExp1], timeout: 1.0)
+        
+        let saveExp2 = expectation(description: "Wait for save completion")
+        sutToPerformLastSave.save(latestFeed) { saveError in
+            XCTAssertNil(saveError, "Expected to save feed successfully")
+            saveExp2.fulfill()
+        }
+        wait(for: [saveExp2], timeout: 1.0)
+        
+        expect(sutToPerformLoad, toLoad: latestFeed)
     }
 }
 
@@ -54,7 +78,7 @@ private extension FeedCacheEndToEndIntegrationTests {
         return sut
     }
     
-    func expect(sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for load to finish.")
         
         sut.load { result in
