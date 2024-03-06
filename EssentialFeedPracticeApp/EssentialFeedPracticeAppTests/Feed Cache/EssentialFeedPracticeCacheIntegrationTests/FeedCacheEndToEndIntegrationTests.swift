@@ -23,19 +23,8 @@ final class FeedCacheEndToEndIntegrationTests: XCTestCase {
     
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
-        let exp = expectation(description: "Wait for load to finish.")
         
-        sut.load { result in
-            switch result {
-                
-            case let .success(feed):
-                XCTAssertEqual(feed, [], "Expected empty feed and got \(feed)")
-            case let .failure(error):
-                XCTFail("Expected successful feed result and got error: \(error)")
-            }
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
+        expect(sut: sut, toLoad: [])
     }
     
     func test_load_deliversItemsSavedOnASeperateInstance() {
@@ -50,24 +39,14 @@ final class FeedCacheEndToEndIntegrationTests: XCTestCase {
         }
         wait(for: [saveFinishExpectation], timeout: 1.0)
         
-        let loadFinishExpectation = expectation(description: "Wait for load feed to finish")
-        sutToPerformLoad.load { loadFeedResult in
-            switch loadFeedResult {
-            case let .success(loadedFeed):
-                XCTAssertEqual(feed, loadedFeed, "Expected loaded feed to be the same as the saved: \(feed). Got \(loadedFeed)")
-            case let .failure(error):
-                XCTFail("Expected load, after save, to succeed Got \(error) instead.")
-            }
-            loadFinishExpectation.fulfill()
-        }
-        wait(for: [loadFinishExpectation], timeout: 1.0)
+        expect(sut: sutToPerformLoad, toLoad: feed)
     }
 }
 
 // MARK: Helpers
 
 private extension FeedCacheEndToEndIntegrationTests {
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> LocalFeedLoader {
+    func makeSUT(file: StaticString = #file, line: UInt = #line) -> LocalFeedLoader {
         let store = createTestStore()
         let sut = LocalFeedLoader(store: store, currentDate: Date.init)
         trackForMemoryLeaks(store, file: file, line: line)
@@ -75,29 +54,44 @@ private extension FeedCacheEndToEndIntegrationTests {
         return sut
     }
     
-    private func setupEmptyStoreState() {
+    func expect(sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load to finish.")
+        
+        sut.load { result in
+            switch result {
+            case let .success(feed):
+                XCTAssertEqual(feed, expectedFeed, "Expected empty feed and got \(feed)")
+            case let .failure(error):
+                XCTFail("Expected successful feed result and got error: \(error)")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func setupEmptyStoreState() {
         emptyTestStore()
     }
     
-    private func undoStoreSideEffects() {
+    func undoStoreSideEffects() {
         emptyTestStore()
     }
     
-    private func emptyTestStore() {
+    func emptyTestStore() {
         try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
     
-    private func createTestStore() -> CoreDataFeedStore {
+    func createTestStore() -> CoreDataFeedStore {
         let storeBundle = Bundle(for: CoreDataFeedStore.self)
         let storeURL = testSpecificStoreURL()
         return try! CoreDataFeedStore(storeURL: storeURL, bundle: storeBundle)
     }
     
-    private func testSpecificStoreURL() -> URL {
+    func testSpecificStoreURL() -> URL {
         return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
     }
     
-    private func cachesDirectory() -> URL {
+    func cachesDirectory() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
 }
