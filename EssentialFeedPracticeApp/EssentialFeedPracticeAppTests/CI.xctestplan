@@ -13,6 +13,7 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
         "identifier" : "8C2783372B5B10DB00A8E585",
@@ -20,10 +21,19 @@
       }
     },
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
         "identifier" : "8C5650362B30DB0500760951",
         "name" : "EssentialFeedPracticeAppTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
+        "identifier" : "8C700FE62B98DD3500B8E120",
+        "name" : "EssentialFeedPracticeCacheIntegrationTests"
       }
     }
   ],
