@@ -162,12 +162,12 @@ private extension LoadFeedFromRemoteUseCaseTests {
     }
 
     private class HTTPClientSpy: HTTPClient {
-        var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
+        var messages = [(url: URL, completion: (Result) -> Void)]()
         var requestedURLs: [URL] {
             return messages.map { $0.url }
         }
         
-        func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
+        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
             messages.append((url, completion))
         }
         
@@ -182,7 +182,7 @@ private extension LoadFeedFromRemoteUseCaseTests {
                 httpVersion: nil,
                 headerFields: nil
             )
-            messages[index].completion(.success(data, response!))
+            messages[index].completion(.success((data, response!)))
         }
     }
 }
