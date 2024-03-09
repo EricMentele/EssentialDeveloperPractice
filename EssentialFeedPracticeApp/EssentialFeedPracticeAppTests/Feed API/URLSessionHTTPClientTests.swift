@@ -93,7 +93,7 @@ extension URLSessionHTTPClientTests {
     }
     
     private func anyData() -> Data {
-        Data(bytes: "any data".utf8)
+        Data("any data".utf8)
     }
     
     private func nonHTTPURLResponse() -> URLResponse {
