@@ -20,6 +20,6 @@ extension FailableDeleteFeedStoreSpecs where Self: XCTestCase {
         
         deleteCache(from: sut)
         
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(nil))
     }
 }
