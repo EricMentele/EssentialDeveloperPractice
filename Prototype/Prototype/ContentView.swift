@@ -9,13 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        NavigationStack {
+            MyFeedList()
+        }
+    }
+}
+
+struct MyFeedList: View {
+    var body: some View {
         List {
-            ForEach((0...10), id: \.self) {_ in 
-                FeedCell()
+            Section(header: Spacer(), footer: Spacer()) {
+                ForEach((0...10), id: \.self) {_ in
+                                FeedCell()
+                            }
+                            .listRowSeparator(.hidden)
             }
-            .listRowSeparator(.hidden, edges: .all)
-        }.listRowSpacing(8.0)
-        
+            .listSectionSeparator(.hidden)
+        }
+        .listRowSpacing(8.0)
+        .navigationTitle("My Feed")
     }
 }
 
