@@ -19,6 +19,7 @@ struct MyFeedList: View {
     let feed = FeedImageViewModel.prototypeFeed
     
     var body: some View {
+        Divider()
         List {
             Section(header: Spacer(), footer: Spacer()) {
                 ForEach(feed, id: \.imageName) { feedItem in
@@ -31,6 +32,7 @@ struct MyFeedList: View {
         .listRowSpacing(8.0)
         .navigationTitle("My Feed")
         .listStyle(.grouped)
+        .padding(.init(top: 0, leading: -8, bottom: 0, trailing: -8))
     }
 }
 
@@ -43,9 +45,10 @@ struct FeedCell: View {
         VStack(alignment: .leading) {
             if let location = feedImage.location {
                 HStack() {
-                    Image(systemName: "pin")
+                    Image(systemName: "mappin.and.ellipse")
                     Text(location)
-                        .font(.title3)
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
                 }
             }
             
@@ -69,18 +72,6 @@ struct FeedCell: View {
             }
         }.padding()
     }
-    
-//    func fadeIn(_ image: UIImage?) {
-//        feedImageView.image = image
-//        
-//        UIView.animate(
-//            withDuration: 0.3,
-//            delay: 0.3,
-//            options: [],
-//            animations: {
-//                self.feedImageView.alpha = 1
-//            })
-//    }
 }
 
 #Preview {
