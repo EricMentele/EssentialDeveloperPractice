@@ -9,13 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        List {
+            ForEach((0...10), id: \.self) {_ in 
+                FeedCell()
+            }
+            .listRowSeparator(.hidden, edges: .all)
+        }.listRowSpacing(8.0)
+        
+    }
+}
+
+struct FeedCell: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack() {
+                Image(systemName: "pin")
+                Text("Peru, Cuzco")
+            }
             Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .backgroundStyle(.gray)
+                .clipShape(RoundedRectangle(cornerRadius: 0.5))
+            Text("This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 linesThis is wrapping to 6 lines")
+                .lineLimit(6)
+        }.padding()
     }
 }
 
