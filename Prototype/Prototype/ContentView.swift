@@ -16,11 +16,13 @@ struct ContentView: View {
 }
 
 struct MyFeedList: View {
+    let feed = FeedImageViewModel.prototypeFeed
+    
     var body: some View {
         List {
             Section(header: Spacer(), footer: Spacer()) {
-                ForEach((0...10), id: \.self) {_ in
-                                FeedCell()
+                ForEach(feed, id: \.imageName) { feedItem in
+                    FeedCell(feedImage: feedItem)
                             }
                             .listRowSeparator(.hidden)
             }
@@ -28,23 +30,31 @@ struct MyFeedList: View {
         }
         .listRowSpacing(8.0)
         .navigationTitle("My Feed")
+        .listStyle(.grouped)
     }
 }
 
 struct FeedCell: View {
+    let feedImage: FeedImageViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
-            HStack() {
-                Image(systemName: "pin")
-                Text("Peru, Cuzco")
+            if let location = feedImage.location {
+                HStack() {
+                    Image(systemName: "pin")
+                    Text(location)
+                }
             }
-            Image(systemName: "globe")
+            
+            Image(feedImage.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .backgroundStyle(.gray)
-                .clipShape(RoundedRectangle(cornerRadius: 0.5))
-            Text("This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 lines This is wrapping to 6 linesThis is wrapping to 6 lines")
-                .lineLimit(6)
+                .clipShape(RoundedRectangle(cornerRadius: 7))
+            if let description = feedImage.description {
+                Text(description)
+                    .lineLimit(6)
+            }
         }.padding()
     }
 }
