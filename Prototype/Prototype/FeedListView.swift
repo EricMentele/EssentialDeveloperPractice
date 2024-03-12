@@ -23,7 +23,7 @@ public struct FeedListView: View {
         List {
             Section(header: Spacer(), footer: Spacer()) {
                 ForEach(feed, id: \.imageName) { feedItem in
-                    FeedCell(feedImage: feedItem)
+                    FeedImageCell(feedImage: feedItem)
                 }
                 .listRowSeparator(.hidden)
             }
