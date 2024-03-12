@@ -29,23 +29,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialFeedPracticeAppFeedAPITests.xctestplan"
+            reference = "container:EssentialFeedPracticeAppTests/EssentialFeedPracticeApp.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8C5650362B30DB0500760951"
-               BuildableName = "EssentialFeedPracticeAppTests.xctest"
-               BlueprintName = "EssentialFeedPracticeAppTests"
-               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1510"
-   version = "2.1">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -20,26 +20,6 @@
                ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <TestPlanReference
-               reference = "container:EssentialFeedPracticeAppAPIEndToEndTests.xctestplan">
-            </TestPlanReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <TestPlanReference
-               reference = "container:EssentialFeedPracticeAppTests/Feed API/EssentialFeedPracticeApp.xctestplan">
-            </TestPlanReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialFeedPracticeAppTests/CI.xctestplan"
+            reference = "container:EssentialFeedPracticeAppTests/CI_macOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

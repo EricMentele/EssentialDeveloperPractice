@@ -1,22 +1,22 @@
 {
   "configurations" : [
     {
-      "id" : "70FFB603-EF52-49FA-A602-ADBCEC05E60F",
-      "name" : "Test Scheme Action",
+      "id" : "8B6B3D8A-A9F4-407A-B836-B3CD535AEF4A",
+      "name" : "Configuration 1",
       "options" : {
 
       }
     }
   ],
   "defaultOptions" : {
-    "testExecutionOrdering" : "random"
+
   },
   "testTargets" : [
     {
       "target" : {
         "containerPath" : "container:EssentialFeedPracticeApp.xcodeproj",
-        "identifier" : "8C2783372B5B10DB00A8E585",
-        "name" : "EssentialFeedPracticeAppAPIEndToEndTests"
+        "identifier" : "8C5650362B30DB0500760951",
+        "name" : "EssentialFeedPracticeAppTests"
       }
     }
   ],

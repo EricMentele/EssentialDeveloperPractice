@@ -13,28 +13,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialFeedPracticeCacheIntegrationTests.xctestplan"
+            reference = "container:EssentialFeedPracticeAppTests/Feed Cache/EssentialFeedPracticeCacheIntegrationTests/EssentialFeedPracticeCacheIntegrationTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8C700FE62B98DD3500B8E120"
-               BuildableName = "EssentialFeedPracticeCacheIntegrationTests.xctest"
-               BlueprintName = "EssentialFeedPracticeCacheIntegrationTests"
-               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
-            </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "EssentialFeedPracticeCacheIntegrationTests">
-               </Test>
-            </SkippedTests>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
