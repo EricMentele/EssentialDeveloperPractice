@@ -10,29 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            MyFeedList()
+            FeedListView()
         }
-    }
-}
-
-struct MyFeedList: View {
-    let feed = FeedImageViewModel.prototypeFeed
-    
-    var body: some View {
-        Divider()
-        List {
-            Section(header: Spacer(), footer: Spacer()) {
-                ForEach(feed, id: \.imageName) { feedItem in
-                    FeedCell(feedImage: feedItem)
-                            }
-                            .listRowSeparator(.hidden)
-            }
-            .listSectionSeparator(.hidden)
-        }
-        .listRowSpacing(8.0)
-        .navigationTitle("My Feed")
-        .listStyle(.grouped)
-        .padding(.init(top: 0, leading: -8, bottom: 0, trailing: -8))
     }
 }
 

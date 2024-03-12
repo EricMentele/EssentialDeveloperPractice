@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct FeedImageViewModel {
+public struct FeedImageViewModel {
     let description: String?
     let location: String?
     let imageName: String
 }
 
-extension FeedImageViewModel {
+public extension FeedImageViewModel {
     static var prototypeFeed: [FeedImageViewModel] {
         return [
             FeedImageViewModel(
