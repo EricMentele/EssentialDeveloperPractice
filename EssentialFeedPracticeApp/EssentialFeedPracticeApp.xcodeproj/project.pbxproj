@@ -235,10 +235,10 @@
 			children = (
 				8CE1EB112B9FF5C700BFDB02 /* EssentialFeedPracticeApp.xctestplan */,
 				8CAF3C782B646D2800687CBC /* CI_macOS.xctestplan */,
-				8CC5F0E02B56FACF00276A0A /* Helpers */,
-				8CFC26002B7D762A00C558BF /* Feed Cache */,
-				8C5650532B47264800760951 /* Feed API */,
-				8CE1EB0F2B9FED9B00BFDB02 /* iOS */,
+				8CC5F0E02B56FACF00276A0A /* Test Helpers */,
+				8CFC26002B7D762A00C558BF /* Feed Cache Tests */,
+				8C5650532B47264800760951 /* Feed API Tests */,
+				8CE1EB0F2B9FED9B00BFDB02 /* Feed iOS Tests */,
 			);
 			path = EssentialFeedPracticeAppTests;
 			sourceTree = "<group>";
@@ -264,7 +264,7 @@
 			path = "Feed API";
 			sourceTree = "<group>";
 		};
-		8C5650532B47264800760951 /* Feed API */ = {
+		8C5650532B47264800760951 /* Feed API Tests */ = {
 			isa = PBXGroup;
 			children = (
 				8CAF3C772B646CC000687CBC /* EssentialFeedPracticeAppFeedAPITests.xctestplan */,
@@ -272,7 +272,7 @@
 				8C5650542B489D8100760951 /* URLSessionHTTPClientTests.swift */,
 				8C2783392B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests */,
 			);
-			path = "Feed API";
+			path = "Feed API Tests";
 			sourceTree = "<group>";
 		};
 		8C700FDB2B97F3F200B8E120 /* Infrastructure */ = {
@@ -305,22 +305,22 @@
 			path = EssentialFeedPracticeCacheIntegrationTests;
 			sourceTree = "<group>";
 		};
-		8CC5F0E02B56FACF00276A0A /* Helpers */ = {
+		8CC5F0E02B56FACF00276A0A /* Test Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				8CC5F0DD2B56FA5D00276A0A /* XCTestCase+MemoryLeakTracking.swift */,
 				8CF291272B91298100E5518F /* SharedTestHelpers.swift */,
 			);
-			path = Helpers;
+			path = "Test Helpers";
 			sourceTree = "<group>";
 		};
-		8CE1EB0F2B9FED9B00BFDB02 /* iOS */ = {
+		8CE1EB0F2B9FED9B00BFDB02 /* Feed iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
 				8CE1EB102B9FF3CB00BFDB02 /* CI_iOS.xctestplan */,
 				8CE1EB0D2B9FED4000BFDB02 /* EssentialFeedPracticeAppiOS.xctestplan */,
 			);
-			path = iOS;
+			path = "Feed iOS Tests";
 			sourceTree = "<group>";
 		};
 		8CF291112B893B5000E5518F /* FeedCache */ = {
@@ -356,7 +356,7 @@
 			path = "Feed Store Specs";
 			sourceTree = "<group>";
 		};
-		8CFC26002B7D762A00C558BF /* Feed Cache */ = {
+		8CFC26002B7D762A00C558BF /* Feed Cache Tests */ = {
 			isa = PBXGroup;
 			children = (
 				8CF291262B91284800E5518F /* Helpers */,
@@ -367,7 +367,7 @@
 				8CF291352B978C1900E5518F /* Feed Store Specs */,
 				8C700FE82B98DD3500B8E120 /* EssentialFeedPracticeCacheIntegrationTests */,
 			);
-			path = "Feed Cache";
+			path = "Feed Cache Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
