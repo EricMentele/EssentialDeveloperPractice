@@ -64,7 +64,7 @@ final class FeedViewControllerTests: XCTestCase {
         let (sut, loader) = makeSUT()
         sut.fakeRefreshControlForiOS17Support()
         
-        sut.loadViewIfNeeded()
+        sut.runViewDidLoadThroughViewIsAppearing()
         sut.refreshControl?.simulatePullToRefresh()
         
         XCTAssertEqual(loader.loadCallCount, 2)
@@ -78,16 +78,17 @@ final class FeedViewControllerTests: XCTestCase {
         let (sut, _) = makeSUT()
         sut.fakeRefreshControlForiOS17Support()
         
-        sut.loadViewIfNeeded()
-        sut.triggerViewIsAppearing()
+        sut.runViewDidLoadThroughViewIsAppearing()
         
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
     }
     
-    func test_viewDidLoad_hidesLoadingIndicatorOnLoaderCompletion() {
+    func test_viewIsAppearing_hidesLoadingIndicatorOnLoaderCompletion() {
         let (sut, loader) = makeSUT()
+        sut.fakeRefreshControlForiOS17Support()
         
-        sut.loadViewIfNeeded()
+        sut.runViewDidLoadThroughViewIsAppearing()
+        
         loader.completeFeedLoading()
         
         XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
@@ -95,10 +96,23 @@ final class FeedViewControllerTests: XCTestCase {
     
     func test_pullToRefresh_showsLoadingIndicator() {
         let (sut, _) = makeSUT()
+        sut.fakeRefreshControlForiOS17Support()
         
+        sut.runViewDidLoadThroughViewIsAppearing()
         sut.refreshControl?.simulatePullToRefresh()
         
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
+    }
+    
+    func test_pullToRefresh_hidesLoadingIndicatorOnLoaderCompletion() {
+        let (sut, loader) = makeSUT()
+        sut.fakeRefreshControlForiOS17Support()
+        
+        sut.runViewDidLoadThroughViewIsAppearing()
+        sut.refreshControl?.simulatePullToRefresh()
+        loader.completeFeedLoading()
+        
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
     }
 }
 
@@ -158,9 +172,14 @@ private extension FeedViewController {
         refreshControl = fake
     }
     
-    func triggerViewIsAppearing() {
+    func runViewIsAppearing() {
         beginAppearanceTransition(true, animated: false)
         endAppearanceTransition()
+    }
+    
+    func runViewDidLoadThroughViewIsAppearing() {
+        loadViewIfNeeded()
+        runViewIsAppearing()
     }
 }
 
