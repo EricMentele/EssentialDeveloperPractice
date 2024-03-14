@@ -77,8 +77,7 @@ final class FeedViewControllerTests: XCTestCase {
         sut.fakeRefreshControlForiOS17Support()
         
         sut.loadViewIfNeeded()
-        sut.beginAppearanceTransition(true, animated: false)
-        sut.endAppearanceTransition()
+        sut.triggerViewIsAppearing()
         
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
     }
@@ -130,6 +129,11 @@ private extension FeedViewController {
         }
         
         refreshControl = fake
+    }
+    
+    func triggerViewIsAppearing() {
+        beginAppearanceTransition(true, animated: false)
+        endAppearanceTransition()
     }
 }
 
