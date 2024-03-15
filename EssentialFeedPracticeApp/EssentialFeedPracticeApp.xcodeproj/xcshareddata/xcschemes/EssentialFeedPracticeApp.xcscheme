@@ -20,6 +20,20 @@
                ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C5650362B30DB0500760951"
+               BuildableName = "EssentialFeedPracticeAppTests.xctest"
+               BlueprintName = "EssentialFeedPracticeAppTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -29,7 +43,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialFeedPracticeAppTests/EssentialFeedPracticeApp.xctestplan"
+            reference = "container:Test Plans/EssentialFeedPracticeApp.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

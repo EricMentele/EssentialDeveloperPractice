@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C700FE62B98DD3500B8E120"
+               BuildableName = "EssentialFeedPracticeCacheIntegrationTests.xctest"
+               BlueprintName = "EssentialFeedPracticeCacheIntegrationTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -13,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialFeedPracticeAppTests/Feed Cache/EssentialFeedPracticeCacheIntegrationTests/EssentialFeedPracticeCacheIntegrationTests.xctestplan"
+            reference = "container:Test Plans/EssentialFeedPracticeCacheIntegrationTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

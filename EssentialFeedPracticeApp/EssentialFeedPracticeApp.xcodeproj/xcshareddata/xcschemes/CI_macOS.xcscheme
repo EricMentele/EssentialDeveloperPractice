@@ -20,6 +20,48 @@
                ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C5650362B30DB0500760951"
+               BuildableName = "EssentialFeedPracticeAppTests.xctest"
+               BlueprintName = "EssentialFeedPracticeAppTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C2783372B5B10DB00A8E585"
+               BuildableName = "EssentialFeedPracticeAppAPIEndToEndTests.xctest"
+               BlueprintName = "EssentialFeedPracticeAppAPIEndToEndTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C700FE62B98DD3500B8E120"
+               BuildableName = "EssentialFeedPracticeCacheIntegrationTests.xctest"
+               BlueprintName = "EssentialFeedPracticeCacheIntegrationTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -29,7 +71,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialFeedPracticeAppTests/CI_macOS.xctestplan"
+            reference = "container:Test Plans/CI_macOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

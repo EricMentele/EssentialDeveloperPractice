@@ -14,9 +14,65 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8C56502E2B30DB0500760951"
-               BuildableName = "EssentialFeedPracticeApp.framework"
-               BlueprintName = "EssentialFeedPracticeApp"
+               BlueprintIdentifier = "8CE1EAF52B9FEB5300BFDB02"
+               BuildableName = "EssentialFeedPracticeAppiOS.framework"
+               BlueprintName = "EssentialFeedPracticeAppiOS"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C5650362B30DB0500760951"
+               BuildableName = "EssentialFeedPracticeAppTests.xctest"
+               BlueprintName = "EssentialFeedPracticeAppTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8CE1EAFC2B9FEB5300BFDB02"
+               BuildableName = "EssentialFeedPracticeAppiOSTests.xctest"
+               BlueprintName = "EssentialFeedPracticeAppiOSTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C2783372B5B10DB00A8E585"
+               BuildableName = "EssentialFeedPracticeAppAPIEndToEndTests.xctest"
+               BlueprintName = "EssentialFeedPracticeAppAPIEndToEndTests"
+               ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C700FE62B98DD3500B8E120"
+               BuildableName = "EssentialFeedPracticeCacheIntegrationTests.xctest"
+               BlueprintName = "EssentialFeedPracticeCacheIntegrationTests"
                ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,7 +85,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:CI_iOS.xctestplan"
+            reference = "container:Test Plans/CI_iOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -54,9 +110,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8C56502E2B30DB0500760951"
-            BuildableName = "EssentialFeedPracticeApp.framework"
-            BlueprintName = "EssentialFeedPracticeApp"
+            BlueprintIdentifier = "8CE1EAF52B9FEB5300BFDB02"
+            BuildableName = "EssentialFeedPracticeAppiOS.framework"
+            BlueprintName = "EssentialFeedPracticeAppiOS"
             ReferencedContainer = "container:EssentialFeedPracticeApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
