@@ -206,7 +206,7 @@
 			path = EssentialFeedPracticeAppAPIEndToEndTests;
 			sourceTree = "<group>";
 		};
-		8C5285752BA49E0C000CE21C /* Test Plans */ = {
+		8C5285752BA49E0C000CE21C /* TestPlans */ = {
 			isa = PBXGroup;
 			children = (
 				8CC114312BA4AE930098E604 /* EssentialFeedPracticeAppAPIEndToEndTests.xctestplan */,
@@ -218,7 +218,7 @@
 				8CE1EB0D2B9FED4000BFDB02 /* EssentialFeedPracticeAppiOS.xctestplan */,
 				8C700FF12B98DDCE00B8E120 /* EssentialFeedPracticeCacheIntegrationTests.xctestplan */,
 			);
-			path = "Test Plans";
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 		8C5650252B30DB0500760951 = {
@@ -226,8 +226,11 @@
 			children = (
 				8CFC25FC2B7D663A00C558BF /* README.md */,
 				8C5650312B30DB0500760951 /* EssentialFeedPracticeApp */,
-				8C5285752BA49E0C000CE21C /* Test Plans */,
+				8C5285752BA49E0C000CE21C /* TestPlans */,
 				8C56503B2B30DB0500760951 /* EssentialFeedPracticeAppTests */,
+				8C700FE82B98DD3500B8E120 /* EssentialFeedPracticeCacheIntegrationTests */,
+				8C2783392B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests */,
+				8CE1EB0F2B9FED9B00BFDB02 /* EssentialFeediOSTests */,
 				8C5650302B30DB0500760951 /* Products */,
 				8CE1EB1A2BA0E46700BFDB02 /* Frameworks */,
 			);
@@ -260,9 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				8CC5F0E02B56FACF00276A0A /* Test Helpers */,
-				8CFC26002B7D762A00C558BF /* Feed Cache Tests */,
-				8C5650532B47264800760951 /* Feed API Tests */,
-				8CE1EB0F2B9FED9B00BFDB02 /* Feed iOS Tests */,
+				8CFC26002B7D762A00C558BF /* Feed Cache */,
+				8C5650532B47264800760951 /* Feed API */,
 			);
 			path = EssentialFeedPracticeAppTests;
 			sourceTree = "<group>";
@@ -288,14 +290,13 @@
 			path = "Feed API";
 			sourceTree = "<group>";
 		};
-		8C5650532B47264800760951 /* Feed API Tests */ = {
+		8C5650532B47264800760951 /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
 				8C56503C2B30DB0500760951 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				8C5650542B489D8100760951 /* URLSessionHTTPClientTests.swift */,
-				8C2783392B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests */,
 			);
-			path = "Feed API Tests";
+			path = "Feed API";
 			sourceTree = "<group>";
 		};
 		8C700FDB2B97F3F200B8E120 /* Infrastructure */ = {
@@ -336,12 +337,12 @@
 			path = "Test Helpers";
 			sourceTree = "<group>";
 		};
-		8CE1EB0F2B9FED9B00BFDB02 /* Feed iOS Tests */ = {
+		8CE1EB0F2B9FED9B00BFDB02 /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				8CE1EB182BA0DC1300BFDB02 /* FeedViewControllerTests.swift */,
 			);
-			path = "Feed iOS Tests";
+			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
 		};
 		8CE1EB1A2BA0E46700BFDB02 /* Frameworks */ = {
@@ -384,7 +385,7 @@
 			path = "Feed Store Specs";
 			sourceTree = "<group>";
 		};
-		8CFC26002B7D762A00C558BF /* Feed Cache Tests */ = {
+		8CFC26002B7D762A00C558BF /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
 				8CF291262B91284800E5518F /* Helpers */,
@@ -393,9 +394,8 @@
 				8CF291202B91061900E5518F /* ValidateCacheUseCaseTests.swift */,
 				8CE1EB122B9FF6A100BFDB02 /* CoreDataFeedStoreTests.swift */,
 				8CF291352B978C1900E5518F /* Feed Store Specs */,
-				8C700FE82B98DD3500B8E120 /* EssentialFeedPracticeCacheIntegrationTests */,
 			);
-			path = "Feed Cache Tests";
+			path = "Feed Cache";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
