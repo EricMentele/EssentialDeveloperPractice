@@ -43,7 +43,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Test Plans/EssentialFeedPracticeApp.xctestplan"
+            reference = "container:TestPlans/EssentialFeedPracticeApp.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

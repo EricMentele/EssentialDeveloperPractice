@@ -130,8 +130,8 @@
 		8CE1EAF62B9FEB5300BFDB02 /* EssentialFeedPracticeAppiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeedPracticeAppiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE1EAFD2B9FEB5300BFDB02 /* EssentialFeedPracticeAppiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedPracticeAppiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE1EB0D2B9FED4000BFDB02 /* EssentialFeedPracticeAppiOS.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EssentialFeedPracticeAppiOS.xctestplan; sourceTree = "<group>"; };
-		8CE1EB102B9FF3CB00BFDB02 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CI_iOS.xctestplan; path = "Test Plans/CI_iOS.xctestplan"; sourceTree = SOURCE_ROOT; };
-		8CE1EB112B9FF5C700BFDB02 /* EssentialFeedPracticeApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = EssentialFeedPracticeApp.xctestplan; path = "Test Plans/EssentialFeedPracticeApp.xctestplan"; sourceTree = SOURCE_ROOT; };
+		8CE1EB102B9FF3CB00BFDB02 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CI_iOS.xctestplan; path = TestPlans/CI_iOS.xctestplan; sourceTree = SOURCE_ROOT; };
+		8CE1EB112B9FF5C700BFDB02 /* EssentialFeedPracticeApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = EssentialFeedPracticeApp.xctestplan; path = TestPlans/EssentialFeedPracticeApp.xctestplan; sourceTree = SOURCE_ROOT; };
 		8CE1EB122B9FF6A100BFDB02 /* CoreDataFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStoreTests.swift; sourceTree = "<group>"; };
 		8CE1EB182BA0DC1300BFDB02 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		8CF2910F2B893B3A00E5518F /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
