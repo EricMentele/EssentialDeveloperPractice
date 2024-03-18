@@ -353,36 +353,6 @@ private extension FeedViewController {
     }
 }
 
-private extension FeedImageCell {
-    var isShowingLocation: Bool {
-        return !locationContainer.isHidden
-    }
-    
-    var locationText: String? {
-        return locationLabel.text
-    }
-    
-    var descriptionText: String? {
-        return descriptionLabel.text
-    }
-    
-    var isShowingImageLoadingIndicator: Bool {
-        feedImageContainer.isShimmering
-    }
-    
-    var renderedImage: Data? {
-        feedImageView.image?.pngData()
-    }
-    
-    var isShowingRetryAction: Bool {
-        !retryButton.isHidden
-    }
-    
-    func simulateRetryAction() {
-        retryButton.simulateTap()
-    }
-}
-
 private extension UIImage {
     static func make(withColor color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
