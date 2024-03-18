@@ -14,7 +14,7 @@ public protocol FeedImageDataLoaderTask {
 
 public protocol FeedImageDataLoader {
     typealias Result = Swift.Result<Data, Error>
-
+    
     func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> FeedImageDataLoaderTask
 }
 
@@ -74,8 +74,9 @@ public final class FeedViewController: UITableViewController {
         imageLoadTasks[indexPath] = imageLoader?.loadImageData(from: model.url) { [weak cell] result in
             cell?.feedImageContainer.stopShimmering()
             let data = try? result.get()
-            cell?.retryButton.isHidden = (data != nil)
-            cell?.feedImageView.image = data.map(UIImage.init) ?? nil
+            let image = data.map(UIImage.init) ?? nil
+            cell?.feedImageView.image = image
+            cell?.retryButton.isHidden = (image != nil)
         }
         return cell
     }
