@@ -395,17 +395,6 @@ private extension UIImage {
         }
     }
 }
-
-private extension UIButton {
-    func simulateTap() {
-        allTargets.forEach { target in
-            actions(forTarget: target, forControlEvent: .touchUpInside)?.forEach {
-                (target as NSObject).perform(Selector($0))
-            }
-        }
-    }
-}
-
 // MARK: - Mocks
 
 private extension FeedViewControllerTests {
