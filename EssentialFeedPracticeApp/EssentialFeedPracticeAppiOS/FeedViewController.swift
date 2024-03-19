@@ -8,27 +8,22 @@
 import UIKit
 import EssentialFeedPracticeApp
 
-public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+public final class FeedViewController: UITableViewController {
     public var feedRefreshController: FeedRefreshViewController?
-    
-    private var imageLoader: FeedImageDataLoader?
-    private var viewAppeared = false
-    private var tableModel = [FeedImageCellController]() {
+    var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
     }
     
-    public convenience init(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) {
+    private var viewAppeared = false
+    
+    convenience init(refreshController: FeedRefreshViewController) {
         self.init()
-        self.feedRefreshController = FeedRefreshViewController(feedLoader: feedLoader)
-        self.imageLoader = imageLoader
+        self.feedRefreshController = refreshController
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-        feedRefreshController?.onRefresh = { [weak self] feed in
-            self?.tableModel = feed.map { FeedImageCellController(model: $0, imageLoader: self!.imageLoader!) }
-        }
+
         refreshControl = feedRefreshController?.view
         tableView.prefetchDataSource = self
     }
@@ -46,27 +41,37 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         }
     }
     
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cellController(forRowAt: indexPath).view()
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cellController(forRowAt: indexPath).cancelLoad()
+        cancelCellControllerLoad(forRowAt: indexPath)
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableModel.count
     }
     
+    private func cellController(forRowAt indexPath: IndexPath) -> FeedImageCellController {
+        return tableModel[indexPath.row]
+    }
+}
+
+extension FeedViewController: UITableViewDataSourcePrefetching {
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        indexPaths.forEach { cellController(forRowAt: $0).preload() }
+        indexPaths.forEach(preloadCellController)
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        indexPaths.forEach { cellController(forRowAt: $0).cancelLoad() }
+        indexPaths.forEach(cancelCellControllerLoad)
     }
     
-    private func cellController(forRowAt indexPath: IndexPath) -> FeedImageCellController {
-        return tableModel[indexPath.row]
+    private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath).cancelLoad()
+    }
+    
+    private func preloadCellController(forRowAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath).preload()
     }
 }
