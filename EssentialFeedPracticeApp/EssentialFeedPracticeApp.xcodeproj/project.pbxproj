@@ -44,6 +44,7 @@
 		8CD2CC092BA8FEDB0025A859 /* FeedViewControllerTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2CC082BA8FEDB0025A859 /* FeedViewControllerTests+Assertions.swift */; };
 		8CD2CC0B2BA900490025A859 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2CC0A2BA900490025A859 /* FeedImageDataLoader.swift */; };
 		8CD2CC0D2BA923470025A859 /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2CC0C2BA923470025A859 /* FeedRefreshViewController.swift */; };
+		8CD2CC102BAA1F4F0025A859 /* FeedRefreshController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2CC0E2BAA1F2F0025A859 /* FeedRefreshController+TestHelpers.swift */; };
 		8CE1EAFE2B9FEB5300BFDB02 /* EssentialFeedPracticeAppiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE1EAF62B9FEB5300BFDB02 /* EssentialFeedPracticeAppiOS.framework */; platformFilter = ios; };
 		8CE1EB0E2B9FED4000BFDB02 /* EssentialFeedPracticeAppiOS.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 8CE1EB0D2B9FED4000BFDB02 /* EssentialFeedPracticeAppiOS.xctestplan */; };
 		8CE1EB132B9FF6A100BFDB02 /* CoreDataFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1EB122B9FF6A100BFDB02 /* CoreDataFeedStoreTests.swift */; };
@@ -145,6 +146,7 @@
 		8CD2CC082BA8FEDB0025A859 /* FeedViewControllerTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewControllerTests+Assertions.swift"; sourceTree = "<group>"; };
 		8CD2CC0A2BA900490025A859 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		8CD2CC0C2BA923470025A859 /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
+		8CD2CC0E2BAA1F2F0025A859 /* FeedRefreshController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedRefreshController+TestHelpers.swift"; sourceTree = "<group>"; };
 		8CE1EAF62B9FEB5300BFDB02 /* EssentialFeedPracticeAppiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeedPracticeAppiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE1EAFD2B9FEB5300BFDB02 /* EssentialFeedPracticeAppiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedPracticeAppiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE1EB0D2B9FED4000BFDB02 /* EssentialFeedPracticeAppiOS.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EssentialFeedPracticeAppiOS.xctestplan; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				8CD2CC042BA8FCB20025A859 /* FeedViewController+TestHelpers.swift */,
 				8CD2CC062BA8FE200025A859 /* FeedViewControllerTests+LoaderSpy.swift */,
 				8CD2CC082BA8FEDB0025A859 /* FeedViewControllerTests+Assertions.swift */,
+				8CD2CC0E2BAA1F2F0025A859 /* FeedRefreshController+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD2CBFF2BA8F9BA0025A859 /* UIButton+TestHepers.swift in Sources */,
+				8CD2CC102BAA1F4F0025A859 /* FeedRefreshController+TestHelpers.swift in Sources */,
 				8CD2CC032BA8FC2A0025A859 /* FeedImageCell+TestHelpers.swift in Sources */,
 				8CE1EB212BA2759D00BFDB02 /* FeedViewControllerTests.swift in Sources */,
 				8CD2CC092BA8FEDB0025A859 /* FeedViewControllerTests+Assertions.swift in Sources */,

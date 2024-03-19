@@ -24,18 +24,6 @@ class FakeRefreshControl: UIRefreshControl {
     }
 }
 
-extension FeedRefreshViewController {
-    func fakeRefreshControlForiOS17Support() {
-        let fake = FakeRefreshControl()
-        view.allTargets.forEach { target in
-            view.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
-                fake.addTarget(target, action: Selector($0), for: .valueChanged)
-            }
-        }
-        view = fake
-    }
-}
-
 extension FeedViewController {
     var isShowingLoadingIndicator: Bool {
         refreshControl?.isRefreshing == true
