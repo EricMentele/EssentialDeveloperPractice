@@ -9,24 +9,29 @@ import UIKit
 import EssentialFeedPracticeApp
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    private var feedLoader: FeedLoader?
+    public var feedRefreshController: FeedRefreshViewController?
+    
     private var imageLoader: FeedImageDataLoader?
     private var imageLoadTasks = [IndexPath : FeedImageDataLoaderTask]()
     private var viewAppeared = false
-    private var tableModel: [FeedImage] = []
+    private var tableModel = [FeedImage]() {
+        didSet { tableView.reloadData() }
+    }
     
     public convenience init(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) {
         self.init()
-        self.feedLoader = feedLoader
+        self.feedRefreshController = FeedRefreshViewController(feedLoader: feedLoader)
         self.imageLoader = imageLoader
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
+        
+        feedRefreshController?.onRefresh = { [weak self] feed in
+            self?.tableModel = feed
+        }
+        refreshControl = feedRefreshController?.view
         tableView.prefetchDataSource = self
-        load()
     }
     
     public override func viewIsAppearing(_ animated: Bool) {
@@ -35,20 +40,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         startRefreshIfViewHasNotAppearedBefore()
     }
     
-    @objc private func load() {
-        refreshControl?.beginRefreshing()
-        feedLoader?.load { [weak self] result in
-            if let feed = try? result.get() {
-                self?.tableModel = feed
-                self?.tableView.reloadData()
-            }
-            self?.refreshControl?.endRefreshing()
-        }
-    }
-    
     @objc func startRefreshIfViewHasNotAppearedBefore() {
         if !viewAppeared {
-            refreshControl?.beginRefreshing()
+            feedRefreshController?.refresh()
             viewAppeared = true
         }
     }
