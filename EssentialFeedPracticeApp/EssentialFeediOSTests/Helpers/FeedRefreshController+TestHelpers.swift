@@ -16,6 +16,6 @@ extension FeedRefreshViewController {
                 fake.addTarget(target, action: Selector($0), for: .valueChanged)
             }
         }
-        view = fake
+        view = binded(fake)
     }
 }
