@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import EssentialFeedPracticeApp
 
 public final class FeedViewController: UITableViewController {
     public var feedRefreshController: FeedRefreshViewController?
