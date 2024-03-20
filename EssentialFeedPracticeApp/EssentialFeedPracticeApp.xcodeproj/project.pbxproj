@@ -265,6 +265,7 @@
 				8C700FE82B98DD3500B8E120 /* EssentialFeedPracticeCacheIntegrationTests */,
 				8C2783392B5B10DB00A8E585 /* EssentialFeedPracticeAppAPIEndToEndTests */,
 				8CC114352BA4C0210098E604 /* EssentialFeedPracticeAppiOS */,
+				8CD2CC1D2BAB87140025A859 /* Feed Presentation */,
 				8CE1EB0F2B9FED9B00BFDB02 /* EssentialFeediOSTests */,
 				8C5650302B30DB0500760951 /* Products */,
 				8CE1EB1A2BA0E46700BFDB02 /* Frameworks */,
@@ -367,14 +368,12 @@
 			isa = PBXGroup;
 			children = (
 				8CC114342BA4C0210098E604 /* FeedViewController.swift */,
+				8CD2CC0A2BA900490025A859 /* FeedImageDataLoader.swift */,
+				8CD2CC142BAA37F40025A859 /* FeedUIComposer.swift */,
 				8CC114382BA61C7A0098E604 /* FeedImageCell.swift */,
 				8CC1143A2BA7B2750098E604 /* UIView+Shimmering.swift */,
-				8CD2CC0A2BA900490025A859 /* FeedImageDataLoader.swift */,
-				8CD2CC0C2BA923470025A859 /* FeedRefreshViewController.swift */,
 				8CD2CC122BAA296C0025A859 /* FeedImageCellController.swift */,
-				8CD2CC142BAA37F40025A859 /* FeedUIComposer.swift */,
-				8CD2CC162BAA4EBF0025A859 /* FeedViewModel.swift */,
-				8CD2CC182BAB4AE80025A859 /* FeedImageViewModel.swift */,
+				8CD2CC0C2BA923470025A859 /* FeedRefreshViewController.swift */,
 			);
 			path = EssentialFeedPracticeAppiOS;
 			sourceTree = "<group>";
@@ -409,6 +408,15 @@
 				8CD2CC002BA8FA2C0025A859 /* UIControl+TestHelpers.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		8CD2CC1D2BAB87140025A859 /* Feed Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8CD2CC182BAB4AE80025A859 /* FeedImageViewModel.swift */,
+				8CD2CC162BAA4EBF0025A859 /* FeedViewModel.swift */,
+			);
+			path = "Feed Presentation";
 			sourceTree = "<group>";
 		};
 		8CE1EB0F2B9FED9B00BFDB02 /* EssentialFeediOSTests */ = {
