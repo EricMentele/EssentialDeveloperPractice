@@ -12,7 +12,7 @@ struct FeedLoadingViewModel {
 }
 
 protocol FeedLoadingView {
-    func display(viewModel: FeedLoadingViewModel)
+    func display(_ viewModel: FeedLoadingViewModel)
 }
 
 struct FeedViewModel {
@@ -20,28 +20,23 @@ struct FeedViewModel {
 }
 
 protocol FeedView {
-    func display(viewModel: FeedViewModel)
+    func display(_ viewModel: FeedViewModel)
 }
 
 public final class FeedPresenter {
-    typealias Observer<T> = (T) -> Void
-    
-    private let feedLoader: FeedLoader
-    
-    init(feedLoader: FeedLoader) {
-        self.feedLoader = feedLoader
-    }
-    
     var feedView: FeedView?
     var loadingView: FeedLoadingView?
     
-    func loadFeed() {
-        loadingView?.display(viewModel: .init(isLoading: true))
-        feedLoader.load { [weak self] result in
-            if let feed = try? result.get() {
-                self?.feedView?.display(viewModel: .init(feed: feed))
-            }
-            self?.loadingView?.display(viewModel: .init(isLoading: false))
-        }
+    func didStartLoadingFeed() {
+        loadingView?.display(.init(isLoading: true))
+    }
+    
+    func didFinishLoadingFeed(with feed: [FeedImage]) {
+        feedView?.display(.init(feed: feed))
+        loadingView?.display(.init(isLoading: false))
+    }
+    
+    func didFinishLoadingFeed(with error: Error) {
+        loadingView?.display(FeedLoadingViewModel(isLoading: false))
     }
 }
