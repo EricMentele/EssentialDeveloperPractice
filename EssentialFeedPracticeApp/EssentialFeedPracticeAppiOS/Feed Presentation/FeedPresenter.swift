@@ -7,16 +7,8 @@
 
 import EssentialFeedPracticeApp
 
-struct FeedLoadingViewModel {
-    var isLoading: Bool
-}
-
 protocol FeedLoadingView {
     func display(_ viewModel: FeedLoadingViewModel)
-}
-
-struct FeedViewModel {
-    var feed: [FeedImage]
 }
 
 protocol FeedView {
