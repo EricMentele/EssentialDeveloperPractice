@@ -8,55 +8,63 @@
 import Foundation
 import EssentialFeedPracticeApp
 
-public final class FeedImageViewModel<Image> {
-    typealias Observer<T> = (T) -> Void
-    
-    var onImageLoad: Observer<Image>?
-    var onImageLoadingStateChange: Observer<Bool>?
-    var onShouldRetryImageLoadStateChange: Observer<Bool>?
-    private let imageTransformer: (Data) -> Image?
-    
-    var description: String? {
-        return model.description
-    }
-    
-    var location: String?  {
-        return model.location
-    }
+struct FeedImageViewModel<Image> {
+    let description: String?
+    let location: String?
+    let image: Image?
+    let isLoading: Bool
+    let shouldRetry: Bool
     
     var hasLocation: Bool {
         return location != nil
     }
-    
-    private let model: FeedImage
-    private let imageLoader: FeedImageDataLoader
-    private var task: FeedImageDataLoaderTask?
+}
 
-    init(model: FeedImage, imageLoader: FeedImageDataLoader, imageTransformer: @escaping (Data) -> Image?) {
-        self.model = model
-        self.imageLoader = imageLoader
+protocol FeedImageView {
+    associatedtype Image
+    
+    func display(_ viewModel: FeedImageViewModel<Image>)
+}
+
+final class FeedImagePresenter<View: FeedImageView, Image> where View.Image == Image {
+    private let view: View
+    private let imageTransformer: (Data) -> Image?
+    
+    internal init(view: View, imageTransformer: @escaping (Data) -> Image?) {
+        self.view = view
         self.imageTransformer = imageTransformer
     }
     
-    public func loadImageData() {
-        onImageLoadingStateChange?(true)
-        onShouldRetryImageLoadStateChange?(false)
-        task = imageLoader.loadImageData(from: model.url) { [weak self] result in
-            self?.handle(result)
-        }
+    func didStartLoadingImageData(for model: FeedImage) {
+        view.display(FeedImageViewModel(
+            description: model.description,
+            location: model.location,
+            image: nil,
+            isLoading: true,
+            shouldRetry: false))
     }
     
-    public func cancelImageDataLoad() {
-        task?.cancel()
-        task = nil
+    private struct InvalidImageDataError: Error {}
+    
+    func didFinishLoadingImageData(with data: Data, for model: FeedImage) {
+        guard let image = imageTransformer(data) else {
+            return didFinishLoadingImageData(with: InvalidImageDataError(), for: model)
+        }
+        
+        view.display(FeedImageViewModel(
+            description: model.description,
+            location: model.location,
+            image: image,
+            isLoading: false,
+            shouldRetry: false))
     }
     
-    private func handle(_ result: FeedImageDataLoader.Result) {
-        if let image = (try? result.get()).flatMap(imageTransformer) {
-            onImageLoad?(image)
-        } else {
-            onShouldRetryImageLoadStateChange?(true)
-        }
-        onImageLoadingStateChange?(false)
+    func didFinishLoadingImageData(with error: Error, for model: FeedImage) {
+        view.display(FeedImageViewModel(
+            description: model.description,
+            location: model.location,
+            image: nil,
+            isLoading: false,
+            shouldRetry: true))
     }
 }
