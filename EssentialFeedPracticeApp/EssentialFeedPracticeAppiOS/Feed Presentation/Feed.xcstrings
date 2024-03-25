@@ -5,10 +5,22 @@
       "comment" : "Title of the feed view",
       "extractionState" : "manual",
       "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το Feed μου"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "My Feed"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meu Feed"
           }
         }
       }
