@@ -37,15 +37,37 @@ extension FeedViewController {
         return ds?.tableView(tableView, cellForRowAt: index)
     }
     
-    func fakeRefreshControlForiOS17Support() {
-        feedRefreshController?.fakeRefreshControlForiOS17Support()
-        refreshControl = feedRefreshController?.view
+    func fullyLoadViewLifecycleWithMockedRefreshController() {
+        simulateAppearance()
     }
     
-    func fullyLoadViewLifecycleWithMockedRefreshController() {
-        loadViewIfNeeded()
+    func simulateAppearance() {
+        if !isViewLoaded {
+            loadViewIfNeeded()
+            
+            prepareForFirstAppearance()
+        }
+        
+       runViewIsAppearing()
+    }
+    
+    private func prepareForFirstAppearance() {
+        setSmallFrameToPreventRenderingCells()
         fakeRefreshControlForiOS17Support()
-        runViewIsAppearing()
+    }
+    
+    private func setSmallFrameToPreventRenderingCells() {
+        tableView.frame = CGRect(x: 0, y: 0, width: 390, height: 1)
+    }
+    
+    func fakeRefreshControlForiOS17Support() {
+        let fake = FakeRefreshControl()
+        refreshControl?.allTargets.forEach { target in
+            refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
+                fake.addTarget(target, action: Selector($0), for: .valueChanged)
+            }
+        }
+        refreshControl = fake
     }
     
     private func runViewIsAppearing() {
